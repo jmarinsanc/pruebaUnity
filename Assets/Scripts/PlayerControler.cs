@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerControler : MonoBehaviour
     public float speedUp;
     public float jumpingPower;
     public SpriteRenderer sprtRnd;
+    public Animator animPlayer;
 
 
     private float horizontal;
@@ -37,6 +39,23 @@ public class PlayerControler : MonoBehaviour
 
     private void checkMovement()
     {
+        if (checkGround.isGrounded)
+        {
+            animPlayer.SetBool("isGrounded", true);
+        }
+        else
+        {
+            animPlayer.SetBool("isGrounded", false);
+        }
+
+        if (Mathf.Abs(horizontal) != 0f)
+        {
+            animPlayer.SetBool("isRunning", true);
+        }
+        else
+        {
+            animPlayer.SetBool("isRunning", false);
+        }
         rb.velocity = new Vector2(horizontal * speedMove, rb.velocity.y);
 
         if (!isFacingRight && horizontal > 0f)
