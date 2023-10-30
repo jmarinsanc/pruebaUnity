@@ -82,4 +82,8 @@ public class PlayerControler : MonoBehaviour
         }
         
     }
+    public void Shoot()
+    {
+        Debug.Log("disparo");
+    }
 }
