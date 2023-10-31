@@ -12,10 +12,16 @@ public class PlayerControler : MonoBehaviour
     public float jumpingPower;
     public SpriteRenderer sprtRnd;
     public Animator animPlayer;
+    public Transform transformPlayer;
+    public GameObject axePrefab;
+    public float waitShootTime;
+    public GameObject axeOut;
 
 
     private float horizontal;
     private bool isFacingRight = true;
+    private Vector2 directionAxe;
+    private float lastShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -82,8 +88,31 @@ public class PlayerControler : MonoBehaviour
         }
         
     }
+
+    public void shootAnimation()
+    {
+        if (Time.time > lastShoot + waitShootTime)
+        {
+            animPlayer.SetTrigger("shoot");
+            lastShoot = Time.time;
+        }
+        
+    }
     public void Shoot()
     {
-        Debug.Log("disparo");
+
+        //Debug.Log("disparo");
+        GameObject axe = Instantiate(axePrefab, axeOut.transform.position, Quaternion.identity);
+
+        if (sprtRnd.flipX)
+        {
+            directionAxe = Vector2.left;
+        }
+        else
+        {
+            directionAxe = Vector2.right;
+        }
+        axe.GetComponent<AxeController>().setDirection(directionAxe);
+
     }
 }

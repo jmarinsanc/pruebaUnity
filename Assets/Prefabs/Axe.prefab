@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1235774286764953738}
   - component: {fileID: 6642239753002858642}
   - component: {fileID: 6765068978939132626}
+  - component: {fileID: -3496772328369361632}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2144900299
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1563197568, guid: be0d7fd919da6a044bf90b99fe2d5f14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,3 +107,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3496772328369361632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849727715266311096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90140c44f060384e96e7cae2b9003c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedAxe: 12
+  transformAxe: {fileID: 1235774286764953738}
+  liveAxe: 1.5
