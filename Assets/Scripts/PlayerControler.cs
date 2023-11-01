@@ -5,7 +5,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControler : MonoBehaviour
+
+    
 {
+    [SerializeField] private GameObject saltoPlayer;
+
+
     public Rigidbody2D rb;
     public float speedMove;
     public float speedUp;
@@ -16,6 +21,7 @@ public class PlayerControler : MonoBehaviour
     public GameObject axePrefab;
     public float waitShootTime;
     public GameObject axeOut;
+    public AudioSource soundEfectJump;
 
 
     private float horizontal;
@@ -26,6 +32,7 @@ public class PlayerControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundEfectJump = saltoPlayer.GetComponent<AudioSource>();
         
     }
 
@@ -85,6 +92,7 @@ public class PlayerControler : MonoBehaviour
         if (checkGround.isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            soundEfectJump.Play();
         }
         
     }
