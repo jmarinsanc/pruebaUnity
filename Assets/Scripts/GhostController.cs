@@ -34,6 +34,11 @@ public class GhostController : MonoBehaviour
 
     }
 
+    public void death()
+    {
+        Destroy(gameObject);
+    }
+
     public void direction()
     {
         if (player.transform.position.x>0f)

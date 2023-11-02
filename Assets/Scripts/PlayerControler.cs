@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : MonoBehaviour
 
@@ -22,17 +24,23 @@ public class PlayerControler : MonoBehaviour
     public float waitShootTime;
     public GameObject axeOut;
     public AudioSource soundEfectJump;
-
+    public UnityEvent loadNewScene;
 
     private float horizontal;
     private bool isFacingRight = true;
     private Vector2 directionAxe;
     private float lastShoot;
 
+    private float xinicial, Yinicial;
+
     // Start is called before the first frame update
     void Start()
     {
-        soundEfectJump = saltoPlayer.GetComponent<AudioSource>();
+        xinicial = transform.position.x;
+        Yinicial = transform.position.y;
+        AudioSource audioSource = saltoPlayer.GetComponent<AudioSource>();
+        //AudioSource audioSource = audioSource1;
+        
         
     }
 
@@ -48,6 +56,11 @@ public class PlayerControler : MonoBehaviour
         horizontal = context.ReadValue<Vector2>().x;
         Debug.Log(horizontal);
 
+    }
+
+    public void recolocar()
+    {
+        transform.position = new Vector2(xinicial, Yinicial);
     }
 
     private void checkMovement()
@@ -122,5 +135,18 @@ public class PlayerControler : MonoBehaviour
         }
         axe.GetComponent<AxeController>().setDirection(directionAxe);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Respawn") || other.gameObject.CompareTag("colisionInferior"))
+        {
+            animPlayer.SetTrigger("death");
+        }
+    }
+
+    public void ldScene()
+    {
+        loadNewScene.Invoke();
     }
 }

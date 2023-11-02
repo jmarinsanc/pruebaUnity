@@ -46,4 +46,12 @@ public class AxeController : MonoBehaviour
     {
         axeDirection = dir;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            other.GetComponent<Animator>().SetTrigger("death");
+        }
+    }
 }
