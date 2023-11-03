@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - colisionInferior
+  - pinchos
   layers:
   - Default
   - TransparentFX

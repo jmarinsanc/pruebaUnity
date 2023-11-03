@@ -139,7 +139,7 @@ public class PlayerControler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Respawn") || other.gameObject.CompareTag("colisionInferior"))
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Respawn") || other.gameObject.CompareTag("colisionInferior") ||other.gameObject.CompareTag("pinchos"))
         {
             animPlayer.SetTrigger("death");
         }
@@ -148,5 +148,15 @@ public class PlayerControler : MonoBehaviour
     public void ldScene()
     {
         loadNewScene.Invoke();
+    }
+
+    public void cambiardeEscena()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
