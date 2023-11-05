@@ -10,17 +10,16 @@ public class AxeController : MonoBehaviour
 
     private Vector2 axeDirection;
     private float timeAlive = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
         movementAxe();
     }
+    
+    //Funciones para que la fecha tenga un tiempo y se gire según la dirección del personaje
     private void movementAxe()
     {
         transformAxe.Translate(axeDirection * speedAxe * Time.fixedDeltaTime);
@@ -47,6 +46,7 @@ public class AxeController : MonoBehaviour
         axeDirection = dir;
     }
 
+    //Funcion para que se muera si el fantasma toca la hacha.
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("enemy"))

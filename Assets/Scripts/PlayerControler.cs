@@ -63,6 +63,7 @@ public class PlayerControler : MonoBehaviour
         transform.position = new Vector2(xinicial, Yinicial);
     }
 
+    //Función para comprobar el movimiento, activar la animacionm de correr, girar el personaje
     private void checkMovement()
     {
         if (checkGround.isGrounded)
@@ -99,6 +100,7 @@ public class PlayerControler : MonoBehaviour
 
     }
 
+    //Función para saltar, está metido el efecto del sonido
     public void Jump()
     {
 
@@ -110,6 +112,7 @@ public class PlayerControler : MonoBehaviour
         
     }
 
+    //Función para la animación del disparo, para no disparar muchas hachas a la vez
     public void shootAnimation()
     {
         if (Time.time > lastShoot + waitShootTime)
@@ -119,6 +122,8 @@ public class PlayerControler : MonoBehaviour
         }
         
     }
+
+    //Función para crear instancias del hacha y darle dirección
     public void Shoot()
     {
 
@@ -133,6 +138,7 @@ public class PlayerControler : MonoBehaviour
         {
             directionAxe = Vector2.right;
         }
+        //aqui le das direccion a la hacha
         axe.GetComponent<AxeController>().setDirection(directionAxe);
 
     }
@@ -155,6 +161,7 @@ public class PlayerControler : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Función para que al morir mi personaje, este vuelva a la misma escena
     public void respawn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
