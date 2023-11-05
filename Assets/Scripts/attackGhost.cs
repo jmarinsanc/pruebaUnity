@@ -7,6 +7,8 @@ public class attackGhost : MonoBehaviour
 {
     public Animator ghostAnimator;
     public UnityEvent isAttacking;
+
+    //Funciónm para llamar al ataque del fantasma, activando la variable attack y llamando a la función isAttacking 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -17,15 +19,6 @@ public class attackGhost : MonoBehaviour
 
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
+    
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
